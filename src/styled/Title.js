@@ -1,7 +1,13 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const Title = styled.h1`
+export const Title1 = styled.h1`
   text-align: center;
-  color: #B22727;
-  padding: 20px 0px 5px 0px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 3.5rem;
+`;
+
+export const Title2 = styled.h2`
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  font-size: 2.5rem;
 `;
