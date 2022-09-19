@@ -1,26 +1,28 @@
-import { Title } from "../styled"
-import { Link } from "react-router-dom"
-import { LinkWord } from "../styled"
-import styled from "styled-components"
+import {
+  Container,
+  Title1,
+  Title2,
+  TextGame,
+  ButtonBlue,
+  ButtonGrn,
+  ButtonYel,
+  ButtonRed,
+} from "../styled";
 
 export const Homepage = () => {
-
   return (
     <Container>
-     <h3>Hello there 👋</h3>
-     <p>General information:</p>
-     <ul>
-      <li>Go to your backend and modify the config url</li>
-      <li>Make sure you clicked on the <b>use template</b> button on github</li>
-      <li>This template is using <a style={LinkWord} target="_blank" href="https://styled-components.com/">styled components</a>, you don't have to use it</li>
-      <li>You don't have to follow the folder structure, feel free to adapt to your own</li>
-      <li>Login and SignUp are already implemented</li>
-      <li>Modify this page to create your own homeepage</li>
-     </ul>
-    </Container>
-  )
-}
+      <Title1>Hello there</Title1>
+      <Title2>Hello there</Title2>
+      <TextGame>
+        This is a text to test how the font and font sizes are looking. What do
+        you think?
+      </TextGame>
 
-const Container = styled.div`
-  margin: 20px
-`
+      <ButtonBlue>Restart</ButtonBlue>
+      <ButtonGrn>Start game</ButtonGrn>
+      <ButtonYel>Next game</ButtonYel>
+      <ButtonRed>Game over</ButtonRed>
+    </Container>
+  );
+};
