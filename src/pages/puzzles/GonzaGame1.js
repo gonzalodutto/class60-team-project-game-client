@@ -21,8 +21,8 @@ export const GonzaGame1 = () => {
     if (
       event.clientX > 325 &&
       event.clientX < 400 &&
-      event.clientY > 450 &&
-      event.clientY < 540
+      event.clientY > 750 &&
+      event.clientY < 840
     ) {
       setClicked(true);
     } else {
@@ -42,27 +42,16 @@ export const GonzaGame1 = () => {
 
   return (
     <Container>
-      X: {coorX}
-      <br />
-      Y: {coorY}
+      X: {coorX} Y: {coorY} {String(clicked)}
       <Magnifier
         src={"https://wallyplant.files.wordpress.com/2011/09/goldrush.jpg"}
         width={1900}
       />
-      {/* <img
-        src="https://wallyplant.files.wordpress.com/2011/09/goldrush.jpg"
-        alt="Find Waldo"
-      /> */}
-      {/* <Box>
-        <Button>Ok</Button>
-      </Box> */}
     </Container>
   );
 };
 
 const Container = styled.div`
-  /* margin: 20px; */
-  position: absolute;
   top: 65px;
   left: 0;
 `;
@@ -71,15 +60,12 @@ const Button = styled.button`
   z-index: 9;
   margin: 610px 0 0 380px;
   margin-top: 15;
-  /* background: #009938; */
   width: 60px;
   height: 100px;
   opacity: 0.7;
 `;
 
 const Box = styled.div`
-  /* width: 5%;
-  height: 5%; */
   opacity: 0.7;
   background: #0057e3;
 `;
