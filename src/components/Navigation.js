@@ -1,107 +1,66 @@
-import styled from "styled-components"
-import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { selectToken } from "../store/user/selectors"
-import { logOut } from "../store/user/slice"
-import { Link } from "react-router-dom"
+import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "../store/user/selectors";
+import { logOut } from "../store/user/slice";
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
-  const [ open, setOpen ] = useState(false)
-
-  const dispatch = useDispatch()
-
-  const token = useSelector(selectToken)
-
-  return(
+  return (
     <Nav>
-      <Logo href="/">
-        Codaisseur<span>templates</span>
-      </Logo>
-      <Hamburger onClick={() => setOpen(!open)}>
-        <span/>
-        <span/>
-        <span/>
-      </Hamburger>
-      <Menu open={open}>
-        <MenuLink to="/empty1">Empty 1</MenuLink>
-        <MenuLink to="/empty2">Empty 2</MenuLink>
-        {token 
-          ? <button onClick={() => dispatch(logOut())}>Logout</button> 
-          : <MenuLink to="/login">Login</MenuLink>}
-      </Menu>
+      <Logo to="/">Good name</Logo>
+      <MenuLink to="/empty"></MenuLink>
+      <MenuLink to="/highscores">Highscores</MenuLink>
+      {token ? (
+        <Logout onClick={() => dispatch(logOut())}>Logout</Logout>
+      ) : (
+        <MenuLink to="/login">Login</MenuLink>
+      )}
     </Nav>
-  )
-}
-
-const MenuLink = styled(Link)`
-  padding: 1rem 2rem;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  color: #ECECEC;
-  transition: all 0.3s ease-in;
-  font-size: 0.9rem;
-
-  &:hover {
-    color: #9CC094;
-  }
-`
+  );
+};
 
 const Nav = styled.div`
-  padding: 0 2rem;
+  font-family: "Press Start 2P", cursive;
+  background: #ffffff;
+
+  margin: 4rem;
+  padding: 1rem 0 2rem;
+  border-bottom: 5px solid;
+
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
-  background: #B22727;
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  right: 0;
-`
+`;
 
-const Logo = styled.a`
-  padding: 1rem 0;
-  color: #ECECEC;
+const Logo = styled(Link)`
+  font-size: 3.5rem;
+  color: #000000;
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.7rem;
+`;
 
-  span {
-    font-weight: 300;
-    font-size: 1.3rem;
+const MenuLink = styled(Link)`
+  font-size: 1rem;
+  color: #000000;
+  text-decoration: none;
+
+  &:hover {
+    color: #02d9fa;
   }
-`
+`;
 
-const Hamburger = styled.div`
-  display: none;
-  flex-direction: column;
+const Logout = styled.button`
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  color: #000000;
+  background: none;
+  border: none;
   cursor: pointer;
-  span {
-    height: 2px;
-    width: 25px;
-    background-color: #ECECEC;
-    margin-bottom: 4px;
-    border-radius: 5px;
-  }
 
-  @media (max-width: 780px) {
-    display: flex;
+  &:hover {
+    color: #02d9fa;
   }
-`
-
-const Menu = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-
-  @media (max-width: 780px) {
-    overflow: hidden;
-    flex-direction: column;
-    width: 100%;
-    max-height: ${({open}) => open ? "300px" : "0"};
-    transition: max-height 0.3s ease-in;
-  }
-`
+`;
