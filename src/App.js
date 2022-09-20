@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route } from "react-router-dom";
 import { Navigation, MessageBox } from "./components";
-import { GuessTheNumber } from "./pages/puzzles/GuessTheNumber";
 import TicTocToe from "./pages/tic-toc-toe/TicTocToe";
 import {
   Homepage,
@@ -12,7 +11,11 @@ import {
   SignUp,
   PointToPointCursor,
   ScaryLabyrinth,
-  SmallestDot, GonzaGame1, GonzaGame2 
+  SmallestDot,
+  GonzaGame1,
+  GonzaGame2,
+  Highscores,
+  GuessTheNumber,
 } from "./pages";
 
 function App() {
@@ -30,6 +33,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/highscores" element={<Highscores />} />
         <Route path="/guessthenumber" element={<GuessTheNumber />} />
         <Route path="/tictoctoe" element={<TicTocToe />} />
         <Route path="/waldo" element={<GonzaGame1 />} />
