@@ -9,4 +9,5 @@ export const TextGame = styled.p`
   text-align: center;
   font-size: 1rem;
   font-family: "Press Start 2P", cursive;
+  line-height: 2rem;
 `;
