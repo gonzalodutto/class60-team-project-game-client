@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Input = styled.input`
   width: 50%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border: 5px solid #000000;
 
   ::placeholder {
-    color: #1E3163;
+    color: #000000;
+    font-family: "Press Start 2P", cursive;
   }
 `;
