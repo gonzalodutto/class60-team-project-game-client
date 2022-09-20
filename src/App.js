@@ -4,7 +4,14 @@ import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route } from "react-router-dom";
 import { Navigation, MessageBox } from "./components";
-import { Homepage, Login, SignUp, PointToPointCursor } from "./pages";
+import {
+  Homepage,
+  Login,
+  SignUp,
+  PointToPointCursor,
+  ScaryLabyrinth,
+  SmallestDot,
+} from "./pages";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +29,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/puzzle1" element={<PointToPointCursor />} />
+        <Route path="/puzzle2" element={<ScaryLabyrinth />} />
+        <Route path="/puzzle3" element={<SmallestDot />} />
       </Routes>
     </div>
   );

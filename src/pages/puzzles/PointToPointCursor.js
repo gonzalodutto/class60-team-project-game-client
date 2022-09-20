@@ -110,4 +110,6 @@ const Continue = styled.div`
   background-color: blue;
   height: 20%;
   width: 20%;
+  min-width: 300px;
+  min-height: 200px;
 `;
