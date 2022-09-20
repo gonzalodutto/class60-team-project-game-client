@@ -5,13 +5,12 @@ import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/thunks";
 import { loginSuccess, logOut, tokenStillValid } from "./slice";
 
-export const signUp = (name, email, password) => {
+export const signUp = (name, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/auth/signup`, {
         name,
-        email,
         password,
       });
 
@@ -22,12 +21,12 @@ export const signUp = (name, email, password) => {
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        console.log(error.response.data.message);
+        console.log(error.message);
         dispatch(
           setMessage({
             variant: "danger",
             dismissable: true,
-            text: error.response.data.message,
+            text: error.message,
           })
         );
       } else {
@@ -45,12 +44,12 @@ export const signUp = (name, email, password) => {
   };
 };
 
-export const login = (email, password) => {
+export const login = (name, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/auth/login`, {
-        email,
+        name,
         password,
       });
 
@@ -124,6 +123,7 @@ export const updateHighscore = (id, checkPoint, highScore) => {
 
     // if we have no token, stop
     if (token === null) return;
+
     dispatch(appLoading());
     try {
       // if we do have a token,
