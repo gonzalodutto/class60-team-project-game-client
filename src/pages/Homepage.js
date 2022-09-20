@@ -1,28 +1,28 @@
-import { Title } from "../styled";
-import { Link } from "react-router-dom";
-import { LinkWord } from "../styled";
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {
+  Container,
+  Title1,
+  Title2,
+  TextGame,
+  ButtonBlue,
+  ButtonGrn,
+  ButtonYel,
+  ButtonRed,
+} from "../styled";
 
 export const Homepage = () => {
-  const navigate = useNavigate();
   return (
     <Container>
-      <h3>Hello there 👋</h3>
-      <p>General information:</p>
+      <Title1>Hello there</Title1>
+      <Title2>Hello there</Title2>
+      <TextGame>
+        This is a text to test how the font and font sizes are looking. What do
+        you think?
+      </TextGame>
 
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          navigate("/puzzle1");
-        }}
-      >
-        Puzzle
-      </button>
+      <ButtonBlue>Restart</ButtonBlue>
+      <ButtonGrn>Start game</ButtonGrn>
+      <ButtonYel>Next game</ButtonYel>
+      <ButtonRed>Game over</ButtonRed>
     </Container>
   );
 };
-
-const Container = styled.div`
-  margin: 20px;
-`;
