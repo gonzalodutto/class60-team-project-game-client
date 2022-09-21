@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Magnifier from "react-magnifier";
+// import Magnifier from "react-magnifier";
 import { useState } from "react";
 
 export const GonzaGame1 = () => {
@@ -43,8 +43,9 @@ export const GonzaGame1 = () => {
   return (
     <Container>
       X: {coorX} Y: {coorY} {String(clicked)}
-      <Magnifier
-        src={"https://wallyplant.files.wordpress.com/2011/09/goldrush.jpg"}
+       <img
+        src="https://wallyplant.files.wordpress.com/2011/09/goldrush.jpg"
+        alt=""
         width={1900}
       />
     </Container>
