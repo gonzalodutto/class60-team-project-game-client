@@ -8,7 +8,6 @@ import { selectToken } from "../store/user/selectors";
 
 export const SignUp = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ export const SignUp = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(signUp(name, email, password));
+    dispatch(signUp(name, password));
   };
 
   return (

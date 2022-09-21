@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Title1,
@@ -10,6 +11,7 @@ import {
 } from "../styled";
 
 export const Homepage = () => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Title1>Hello there</Title1>
@@ -19,9 +21,9 @@ export const Homepage = () => {
         you think?
       </TextGame>
 
-      <ButtonBlue>Restart</ButtonBlue>
-      <ButtonGrn>Start game</ButtonGrn>
-      <ButtonYel>Next game</ButtonYel>
+      <ButtonBlue onClick={(e) => {e.preventDefault(); navigate("/PointToPointCursor")}}>Restart</ButtonBlue>
+      <ButtonGrn onClick={(e) => {e.preventDefault(); navigate("/PointToPointCursor")}}>Start game</ButtonGrn>
+      <ButtonYel onClick={(e) => {e.preventDefault(); navigate("/PointToPointCursor")}}>Next game</ButtonYel>
       <ButtonRed>Game over</ButtonRed>
     </Container>
   );

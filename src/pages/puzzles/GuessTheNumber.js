@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { selectToken } from "../../store/user/selectors";
+import { getUserWithStoredToken } from "../../store/user/thunks";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import {
   ButtonBlue,
   ButtonGrn,
@@ -15,7 +18,18 @@ let randomNumber = Math.round(Math.random() * 100) + 1;
 let guessCount = 0;
 
 export const GuessTheNumber = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+    dispatch(getUserWithStoredToken());
+  }, [token, navigate, dispatch]);
+
   const [valueUser, setValueUser] = useState("");
   const [results, setResult] = useState("");
   const [failed, setFailed] = useState(false);
@@ -37,7 +51,7 @@ export const GuessTheNumber = () => {
           <ButtonYel
             onClick={(e) => {
               e.preventDefault();
-              navigate("/puzzle1");
+              navigate("/waldo");
             }}
           >
             Next game

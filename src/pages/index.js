@@ -5,6 +5,5 @@ export * from "./Highscores";
 export * from "./puzzles/GonzaGame1";
 export * from "./puzzles/GonzaGame2";
 export * from "./puzzles/PointToPointCursor";
-export * from "./puzzles/ScaryLabyrinth";
 export * from "./puzzles/SmallestDot";
 export * from "./puzzles/GuessTheNumber";

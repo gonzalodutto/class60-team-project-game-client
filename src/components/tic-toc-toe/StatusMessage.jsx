@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Status_message = ({ winner, curr }) => {
+const StatusMessage = ({ winner, curr }) => {
   const nomovesleft = curr.board.every(element => element !== null);
 
   return (
@@ -34,4 +34,4 @@ const Status_message = ({ winner, curr }) => {
   );
 };
 
-export default Status_message;
+export default StatusMessage;

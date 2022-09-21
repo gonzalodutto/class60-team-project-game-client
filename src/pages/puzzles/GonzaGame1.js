@@ -1,22 +1,32 @@
 import styled from "styled-components";
-// import Magnifier from "react-magnifier";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
+import {
+  getUserWithStoredToken,
+} from "../../store/user/thunks";
 
 export const GonzaGame1 = () => {
-  const [clicked, setClicked] = useState(false);
-  const [passed, setPassed] = useState(false);
-  const [coorX, setCoorX] = useState(false);
-  const [coorY, setCoorY] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+    dispatch(getUserWithStoredToken());
+  }, [token, navigate, dispatch]);
+
+  const [correct, setCorrect] = useState(false);
 
   document.addEventListener("mousemove", mousePos);
   document.addEventListener("click", mouseClick);
 
   function mousePos(event) {
     event.preventDefault();
-    // console.log("X:", event.clientX);
-    // console.log("Y:", event.clientY);
-    setCoorX(event.clientX);
-    setCoorY(event.clientY);
 
     if (
       event.clientX > 325 &&
@@ -24,25 +34,24 @@ export const GonzaGame1 = () => {
       event.clientY > 750 &&
       event.clientY < 840
     ) {
-      setClicked(true);
+      setCorrect(true);
     } else {
-      setClicked(false);
+      setCorrect(false);
     }
   }
 
   function mouseClick(event) {
-    if (clicked) {
-      console.log("AAAAA");
+    if (correct) {
+      event.preventDefault();
       document.removeEventListener("mousemove", mousePos);
       document.removeEventListener("click", mouseClick);
-      setPassed(true);
       alert("You find Waldo");
+      navigate("/TicTocToe");
     }
   }
 
   return (
     <Container>
-      X: {coorX} Y: {coorY} {String(clicked)}
        <img
         src="https://wallyplant.files.wordpress.com/2011/09/goldrush.jpg"
         alt=""
@@ -55,18 +64,4 @@ export const GonzaGame1 = () => {
 const Container = styled.div`
   top: 65px;
   left: 0;
-`;
-
-const Button = styled.button`
-  z-index: 9;
-  margin: 610px 0 0 380px;
-  margin-top: 15;
-  width: 60px;
-  height: 100px;
-  opacity: 0.7;
-`;
-
-const Box = styled.div`
-  opacity: 0.7;
-  background: #0057e3;
 `;

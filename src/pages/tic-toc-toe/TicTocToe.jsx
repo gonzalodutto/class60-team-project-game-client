@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Board from "../../components/tic-toc-toe/Board";
 import History from "../../components/tic-toc-toe/History";
-import Status_message from "../../components/tic-toc-toe/Status_message";
+import StatusMessage from "../../components/tic-toc-toe/StatusMessage";
 import { calculateWinner } from "./winner";
 import "../../styled/main.scss";
+import { ButtonGrn } from "../../styled";
+import { useNavigate } from "react-router-dom";
 
 const New_game = [{ board: Array(9).fill(null), isXnext: true }];
 const TicTocToe = () => {
+  const navigate = useNavigate();
   const [history, update_history] = useState(New_game);
   const [currentmove, set_currentmove] = useState(0);
 
@@ -48,7 +51,7 @@ const TicTocToe = () => {
         <span className="text-orange"> Tac </span>{" "}
         <span className="text-green"> Toe </span>{" "}
       </h1>
-      <Status_message winner={winner} curr={curr} />
+      <StatusMessage winner={winner} curr={curr} />{winner ? <ButtonGrn onClick={navigate("/magic-eye")}/> : null}
       <Board
         board={curr.board}
         handlesquareclick={handlesquareclick}

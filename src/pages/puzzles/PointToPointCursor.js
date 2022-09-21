@@ -1,21 +1,14 @@
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken, selectUser } from "../../store/user/selectors";
+import { selectToken } from "../../store/user/selectors";
 import {
   getUserWithStoredToken,
-  updateHighscore,
 } from "../../store/user/thunks";
 import {
-  Container,
-  Title1,
-  Title2,
   TextGame,
   ButtonBlue,
-  ButtonGrn,
-  ButtonYel,
-  ButtonRed,
 } from "../../styled";
 
 export const PointToPointCursor = () => {
@@ -29,13 +22,11 @@ export const PointToPointCursor = () => {
       navigate("/");
     }
     dispatch(getUserWithStoredToken());
-  }, [token, navigate]);
-  const user = useSelector(selectUser);
-  console.log(user);
+  }, [token, navigate, dispatch]);
 
   const [failed, setFailed] = useState(false);
   const [passed, setPassed] = useState(false);
-  let field, width, height, startX, startY;
+  let field, width, height;
   document.addEventListener("mousemove", mousePos);
 
   window.onload = function () {
@@ -85,8 +76,7 @@ export const PointToPointCursor = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              dispatch(updateHighscore(user.id, 1, 1));
-              navigate("/puzzle2");
+              navigate("/GuessTheNumber");
             }}
           >
             <TextGame>Next problem</TextGame>
@@ -115,7 +105,7 @@ const Bottom = styled.div`
 const Whole = styled.div`
   display: flex;
   flex-direction: column;
-  maring: 0;
+  margin: 0;
 `;
 
 const Field = styled.div`
@@ -142,14 +132,6 @@ const Finish = styled.div`
   background-color: green;
   bottom: 0;
   right: 0;
-  z-index: 1;
-`;
-
-const Restart = styled.button`
-  position: absolute;
-  width: 200px;
-  height: 50px;
-  background-color: red;
   z-index: 1;
 `;
 

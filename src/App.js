@@ -10,7 +10,6 @@ import {
   Login,
   SignUp,
   PointToPointCursor,
-  ScaryLabyrinth,
   SmallestDot,
   GonzaGame1,
   GonzaGame2,
@@ -38,9 +37,8 @@ function App() {
         <Route path="/tictoctoe" element={<TicTocToe />} />
         <Route path="/waldo" element={<GonzaGame1 />} />
         <Route path="/magic-eye" element={<GonzaGame2 />} />
-        <Route path="/puzzle1" element={<PointToPointCursor />} />
-        <Route path="/puzzle2" element={<ScaryLabyrinth />} />
-        <Route path="/puzzle3" element={<SmallestDot />} />
+        <Route path="/PointToPointCursor" element={<PointToPointCursor />} />
+        <Route path="/SmallestDot" element={<SmallestDot />} />
       </Routes>
     </div>
   );

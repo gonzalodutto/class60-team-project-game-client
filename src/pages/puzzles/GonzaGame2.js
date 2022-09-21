@@ -1,9 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectToken } from "../../store/user/selectors";
+import {
+  getUserWithStoredToken,
+} from "../../store/user/thunks";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { ButtonGrn } from "../../styled";
 
 export const GonzaGame2 = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+    dispatch(getUserWithStoredToken());
+  }, [token, navigate, dispatch]);
+
   const [answer, setAnswer] = useState(false);
   // const opticalllusions
 
@@ -23,7 +40,7 @@ export const GonzaGame2 = () => {
           onChange={(e) => holdAnswer(e)}
           style={{ margin: "1rem" }}
         ></input>
-        {answer === "donut" ? <ButtonGrn>Next game</ButtonGrn> : ""}
+        {answer === "donut" ? <ButtonGrn onClick={(e) => {e.preventDefault(); navigate("/highscores")}}>See how bad you were here</ButtonGrn> : ""}
       </Paragraph>
       <Image alt="Magic eye puzzle" src="https://i.imgur.com/bHUnRQW.jpg" />
 
