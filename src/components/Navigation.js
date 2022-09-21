@@ -10,7 +10,13 @@ export const Navigation = () => {
 
   return (
     <Nav>
-      <Logo to="/">Good name</Logo>
+      <Logo to="/">
+        <span style={{ color: "#02d9fa" }}>P</span>
+        <span style={{ color: "#92cd41" }}>L</span>
+        <span style={{ color: "gold" }}>A</span>
+        <span style={{ color: "tomato" }}>Y</span>
+        4ever
+      </Logo>
       <MenuLink to="/empty"></MenuLink>
       <MenuLink to="/highscores">Highscores</MenuLink>
       {token ? (
